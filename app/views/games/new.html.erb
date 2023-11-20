@@ -1,0 +1,18 @@
+<div class="container mt-4">
+    <h1 class="mb-4">New game</h1>
+    <div class="d-flex gap-3 text-center align-items-center">
+        <% @grid.each do |letter| %>
+          <span class="fw-bold fs-3 shadow bg-primary text-white" style="width: 40px; height: 50px"><%= letter %></span>
+        <% end %>
+    </div>
+
+    <form class="mt-4" style="width: 38%" action="/score" method="post" data-turbo="false">
+    <p class="mb-1"> What is the longest word you can find?</p>
+        <div class="input-group mb-3">
+        <input type="text" class="form-control" name="word">
+        <%= hidden_field_tag :grid, @grid %>
+        <button class="btn btn-light border fw-bold" type="submit">Play</button>
+        </div>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    </form>
+</div>
